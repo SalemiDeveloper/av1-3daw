@@ -1,19 +1,27 @@
 <?php
-// Verificando se o formulário foi enviado
-if ($_SERVER["REQUEST_METHOD"] == "POST") 
-{
-  // Obtendo os valores enviados pelo formulário
-  $pergunta = $_POST["pergunta"];
-  $respostaCorreta = $_POST["resposta_texto_correta"];
-  
-  // Montando a string com os dados
-  $dados = "Pergunta: " . $pergunta . "\n";
-  $dados .= "Resposta correta: " . $respostaCorreta . "\n";
-  
-  // Salvando os dados no arquivo
-  file_put_contents("perguntas_texto.txt", $dados, FILE_APPEND);
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Obter os valores enviados pelo formulário
+    $perguntat = $_POST["pergunta_texto"];
+    $respostaCorretat = $_POST["resposta_texto_correta"];
 
-  header("Location: index.html");
-  exit;
+    // Montar os dados a serem salvos
+    $dadost = "Pergunta: " . $perguntat . ";";
+    $dadost .= "Resposta correta: " . $respostaCorretat . ";";
+
+    // Abrir o arquivo em modo de adição
+    $arquivot = fopen("respostas_texto.txt", "a");
+
+    if ($arquivot) {
+        // Escrever os dados no arquivo
+        fwrite($arquivot, $dadost);
+
+        // Fechar o arquivo
+        fclose($arquivot);
+
+        header("Location: index.html");
+        exit;
+    } else {
+        echo "<p>Ocorreu um erro ao abrir o arquivo.</p>";
+    }
 }
 ?>
