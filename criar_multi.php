@@ -1,44 +1,48 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-br">
 <head>
-    <title>Criar Perguntas e Respostas de Múltipla escolha</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criando Múltipla Escolha</title>
 </head>
 <body>
+    <header>
+        <h2>Criar pergunta e resposta de múltipla escolha</h2>
+    </header>
 
-  <h1>Criar Perguntas e Respostas de Múltipla escolha</h1>
+    <form action="salvar_multi.php" method="post">
 
-  <form action="salvar_multi.php" method="POST">
-    
     <label for="pergunta">Pergunta:</label>
-    <input type="text" name="pergunta" id="pergunta" required>
-    
+    <input type="text" name="pergunta_multi" id="idpergunta_multi" required>
+
     <br><br>
-  
-  <label for="resposta_a">
-    a) <input type="text" name="resposta_a" id="resposta_a" required>
-  </label><br>
-  
-  <label for="resposta_b">
-    b) <input type="text" name="resposta_b" id="resposta_b" required>
-  </label><br>
-  
-  <label for="resposta_c">
-    c) <input type="text" name="resposta_c" id="resposta_c" required>
-  </label><br>
 
-  <label for="resposta_d">
-    d) <input type="text" name="resposta_d" id="resposta_d" required>
-  </label><br>
-
-  <label for="resposta_correta">
-    Resposta correta: <input type="text" name="resposta_correta" id="resposta_correta" required>
-  </label>
-
+    <label for="resposta_a">a.</label>
+    <input type="text" name="resposta_a" id="idresposta_a">
     <br>
-  <input type="submit" value="Enviar">
-</form>
 
+    <label for="resposta_b">b.</label>
+    <input type="text" name="resposta_b" id="idresposta_b">
+    <br>
 
+    <label for="resposta_c">c.</label>
+    <input type="text" name="resposta_c" id="idresposta_c">
+    <br>
 
+    <label for="resposta_d">d.</label>
+    <input type="text" name="resposta_d" id="idresposta_d">
+    <br>
+
+    <label for="resposta_correta">Resposta correta: </label>
+    <input type="text" name="resposta_correta" id="idresposta_correta">
+    <br>
+
+    <input type="submit" value="Enviar">
+    
+    </form>
 </body>
+  
 </html>
+
+
