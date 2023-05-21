@@ -1,27 +1,28 @@
 <?php
-//verificar se o formulário foi enviado
-if ($_SERVER["REQUEST_METHOD"] == "POST")
-{
-  //Obtém os valores enviados pelo formulário
-  $pergunta = $_POST["pergunta"];
-  $respostaA = $_POST["resposta_a"];
-  $respostaB = $_POST["resposta_b"];
-  $respostaC = $_POST["resposta_c"];
-  $respostaD = $_POST["resposta_d"];
-  $respostaCorreta = $_POST["resposta_correta"];
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Obter os valores enviados pelo formulário
+    $pergunta = $_POST["pergunta_multi"];
+    $respostaA = $_POST["resposta_a"];
+    $respostaB = $_POST["resposta_b"];
+    $respostaC = $_POST["resposta_c"];
+    $respostaD = $_POST["resposta_d"];
+    $respostaCorreta = $_POST["resposta_correta"];
 
-  // Monta a string com os dados
-  $dados = "Pergunta: " . $pergunta . "\n";
-  $dados .= "a) " . $respostaA . "\n";
-  $dados .= "b) " . $respostaB . "\n";
-  $dados .= "c) " . $respostaC . "\n";
-  $dados .= "d) " . $respostaD . "\n";
-  $dados .= "Resposta correta: " . $respostaCorreta . "\n";
+    // Aqui você pode realizar as operações de salvamento dos dados, como inserção em um banco de dados ou gravação em um arquivo.
 
-  // Salva os dados no arquivo
-  file_put_contents("perguntas_multipla_escolha.txt", $dados, FILE_APPEND);
+    // Exemplo de salvamento em arquivo
+    $dados = "Pergunta: " . $pergunta . ";";
+    $dados .= "a) " . $respostaA . ";";
+    $dados .= "b) " . $respostaB . ";";
+    $dados .= "c) " . $respostaC . ";";
+    $dados .= "d) " . $respostaD . ";";
+    $dados .= "Resposta correta: " . $respostaCorreta . ";";
 
-  header("Location: index.html");
-  exit;
+    $arquivo = fopen("respostas.txt", "a"); // Abre o arquivo em modo de adição
+    fwrite($arquivo, $dados); // Escreve os dados no arquivo
+    fclose($arquivo); // Fecha o arquivo
+
+    header("Location: index.html");
+    exit;
 }
 ?>
